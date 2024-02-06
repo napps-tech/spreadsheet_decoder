@@ -410,6 +410,9 @@ class XlsxDecoder extends SpreadsheetDecoder {
       default:
         var s = node.getAttribute('s');
         var valueNode = node.findElements('v');
+        if (valueNode.isEmpty) {
+          row.add('');
+        }
         var content = valueNode.first;
         if (s != null) {
           var fmtId = _numFormats[int.parse(s)];
